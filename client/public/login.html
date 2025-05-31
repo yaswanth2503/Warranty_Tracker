@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Login</title>
+  <link rel="stylesheet" href="./css/login.css" />
+   <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+
+  <header>
+    <p>Warranty Tracker Login</p>
+  </header>
+
+  <div class="container">
+    <div class="heading">Login Here!</div>
+    <form action="/login" method="POST" id="loginForm">
+      <div class="form-group">
+        <label for="employeeId">Employee ID</label><br>
+        <input type="text" id="employeeId" name="Employee_Id" required />
+      </div>
+      <div class="form-group input-with-icon">
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="Password" required />
+        <i class="ri-eye-off-line toggle-password" id="togglePassword"></i>
+        
+      </div>
+      <button type="submit" class="login">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const toggleIcon = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    toggleIcon.addEventListener("click", () => {
+    const isVisible = passwordInput.type === "text";
+    passwordInput.type = isVisible ? "password" : "text";
+    toggleIcon.classList.toggle("ri-eye-line", !isVisible);       
+    toggleIcon.classList.toggle("ri-eye-off-line", isVisible);  
+  });
+
+    const form =document.getElementById('loginForm');
+
+    form.addEventListener('submit',async function (e){
+        e.preventDefault();
+        const formData={
+            Employee_Id:parseInt(document.getElementById('employeeId').value),
+            Password:document.getElementById('password').value
+        };
+
+
+    try{
+        const response=await fetch('http://localhost:3000/api/login',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(formData)
+        });
+
+        const result= await response.json();
+
+        if(response.ok){
+            console.log(result.message);
+            window.location.href='/client/public/index.html'
+        }
+
+        else{
+            console.log(formData);
+            console.log(result.message);
+        }
+    }
+
+    catch(error){
+         
+        console.error('Login error',error.message)
+    }
+
+    });
+  </script>
+
+</body>
+</html>
