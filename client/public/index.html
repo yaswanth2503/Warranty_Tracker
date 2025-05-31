@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warranty Tracker</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <div class="heading">
+          <h2>Warranty Tracker</h2>
+        </div>
+        <ul class="list-grp">
+          <!-- <li><span><i class="ri-dashboard-line"></i></span><a href="#dashboard" class="menu-item active"  onclick="showDashboard(event)">Dashboard</a></li> -->
+          <li>
+            <span style="color: #9DA5B4;"><i class="ri-file-list-line"></i></span
+            ><a
+              href="#assests"
+              class="menu-item"
+              onclick="showWarrantyAssets(event)"
+              >Assets</a
+            >
+          </li>
+          <li>
+            <span style="color: #9DA5B4;"><i class="ri-logout-box-r-line"></i></span
+            ><a href="#logout" class="menu-item">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- End of Sidebar -->
+
+      <!-- Assets -->
+      <div id="assests">
+        <!-- Filters  -->
+        <div class="filters">
+            <div class="filter-grp">
+                <label for="filter-category">Category</label>
+                <select name="filter-category" id="filter-category">
+                    <option value="select">Select</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="keyboard">Keyboard</option>
+                    <option value="mouse">Mouse</option>
+                    <option value="monitor">Monitor</option>
+                  </select>
+            </div>
+            <div class="filter-grp">
+                <label for="filter-brand">Brand</label>
+                <select name="filter-brand" id="filter-brand">
+                  <option value="select">Select</option>
+                  <optgroup label="Mobile">
+                    <option value="samsung">Samsung</option>
+                    <option value="redme">Redme</option>
+                    <option value="realme">Realme</option>
+                  </optgroup>
+              
+                  <optgroup label="Laptop">
+                    <option value="dell">Dell</option>
+                    <option value="hp">HP</option>
+                    <option value="lenovo">Lenovo</option>
+                  </optgroup>
+              
+                  <optgroup label="Keyboard">
+                    <option value="logitech">Logitech</option>
+                    <option value="zebronics">Zebronics</option>
+                    <option value="razer">Razer</option>
+                  </optgroup>
+              
+                  <optgroup label="Mouse">
+                    <option value="logitech">Logitech</option>
+                    <option value="zebronics">Zebronics</option>
+                    <option value="razer">Razer</option>
+                  </optgroup>
+              
+                  <optgroup label="Monitor">
+                    <option value="dell">Dell</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="lg">LG</option>
+                    <option value="asus">ASUS</option>
+                  </optgroup>
+                </select>
+                    
+                </select>
+            </div>
+
+            <div class="filter-grp">
+                <label for="filter-model">Model</label>
+                <select name="filter-model" id="filter-model">
+                  <option value="select">Select</option>
+              
+                  <optgroup label="Samsung (Mobile)">
+                    <option value="s23">Samsung S23</option>
+                    <option value="s24">Samsung S24</option>
+                    <option value="m31">Samsung M31 Galaxy</option>
+                  </optgroup>
+              
+                  <optgroup label="Redme">
+                    <option value="10pro">Redme Note 10 Pro</option>
+                    <option value="10promax">Redme Note 10 Pro Max</option>
+                    <option value="10">Redme Note 10</option>
+                  </optgroup>
+              
+                  <optgroup label="Realme">
+                    <option value="g2">Realme G2</option>
+                    <option value="9pro">Realme 9 Pro</option>
+                    <option value="8pro">Realme 8 Pro</option>
+                  </optgroup>
+              
+                  <optgroup label="Dell (Laptop)">
+                    <option value="xps">Dell XPS</option>
+                    <option value="11">Dell XPS 11</option>
+                    <option value="13">Dell XPS 13</option>
+                  </optgroup>
+              
+                  <optgroup label="HP">
+                    <option value="spectre">HP Spectre</option>
+                    <option value="15">HP 15</option>
+                    <option value="pavilion">HP Pavilion</option>
+                  </optgroup>
+              
+                  <optgroup label="Lenovo">
+                    <option value="ideapad">Lenovo IdeaPad</option>
+                    <option value="y50">Lenovo Y50</option>
+                    <option value="s50">Lenovo S50</option>
+                  </optgroup>
+              
+                  <optgroup label="Logitech (Keyboard)">
+                    <option value="g513">Logitech G513</option>
+                    <option value="k840">Logitech K840</option>
+                    <option value="g915">Logitech G915</option>
+                  </optgroup>
+
+                  <optgroup label="Zebronics(Keyboard)">
+                    <option value="zebronics_zeb_km500">Zebronics Zeb KM500</option>
+                    <option value="zebronics_zeb_km300">Zebronics Zeb KM300</option>
+                    <option value="zebronics_zeb_km600">Zebronics Zeb KM600</option>
+                    <option value="zebronics_zeb_km200">Zebronics Zeb KM200</option>
+                  </optgroup>
+
+                  <optgroup label="Razer(Keyboard)">
+                    <option value="razer_blackwidow_v3">Razer BlackWidow V3</option>
+                    <option value="razer_huntsman">Razer Huntsman</option>
+                    <option value="razer_orochi_v2">Razer Orochi V2</option>
+                    <option value="razer_blackwidow_v2">Razer BlackWidow V2</option>
+                    <option value="razer_cynosa_v2">Razer Cynosa V2</option>
+                    <option value="razer_huntsman_mini">Razer Huntsman Mini</option>
+                  </optgroup>
+                  
+                  
+
+                  <optgroup label="Logitech(Mouse)">
+                    <option value="mx_master_3">Logitech MX Master 3</option>
+                    <option value="g502_hero">Logitech G502 Hero</option>
+                    <option value="g_pro_wireless">Logitech G Pro Wireless</option>
+                    <option value="g703_lightspeed">Logitech G703 Lightspeed</option>
+                    
+                  </optgroup>
+                  
+              
+                  <optgroup label="Zebronics (Mouse)">
+                    <option value="zebronics_zeb_mouse">Zebronics Zeb Mouse</option>
+                    <option value="zebronics_zeb_zephyr">Zebronics Zeb Zephyr</option>
+                    <option value="zebronics_zeb_steel">Zebronics Zeb Steel</option>
+                  </optgroup>
+              
+                  <optgroup label="Razer (Mouse)">
+                    <option value="razer_deathadder">Razer DeathAdder</option>
+                    <option value="razer_mamba">Razer Mamba</option>
+                    <option value="razer_naga">Razer Naga</option>
+                    <option value="razer_viper">Razer Viper</option>
+                    <option value="razer_dahlia">Razer Dahlia</option>
+                  </optgroup>
+              
+                  <optgroup label="Dell (Monitor)">
+                    <option value="dell_u2720q">Dell U2720Q</option>
+                    <option value="dell_s2721dgf">Dell S2721DGF</option>
+                    <option value="dell_u3419w">Dell U3419W</option>
+                    <option value="dell_p2419h">Dell P2419H</option>
+                  </optgroup>
+              
+                  <optgroup label="Samsung (Monitor)">
+                    <option value="samsung_odyssey_g7">Samsung Odyssey G7</option>
+                    <option value="samsung_ue590">Samsung UE590</option>
+                    <option value="samsung_curved_lc24f390">Samsung Curved LC24F390</option>
+                    <option value="samsung_uhd_u28e590d">Samsung UHD U28E590D</option>
+                  </optgroup>
+              
+                  <optgroup label="LG">
+                    <option value="lg_ultragear_27gl850">LG UltraGear 27GL850</option>
+                    <option value="lg_27gn950b">LG 27GN950-B</option>
+                    <option value="lg_34wk650">LG 34WK650</option>
+                    <option value="lg_32gk850g">LG 32GK850G</option>
+                  </optgroup>
+                </select>
+            </div>        
+             
+            <div class="filter-grp">
+                <button onclick="loadFilter(event)">Load</button>
+            </div>
+
+        </div>
+
+
+
+        <!-- End of Filters -->
+
+        <!-- Add Asset  -->
+        
+          <div class="add-asset">
+            <button onclick="showRegisterationForm(event)">Add Asset</button>
+          </div>
+  
+        <!-- End of Add Asset -->
+
+        <!-- Register Product -->
+        <div id="register-product">
+          <div class="popup-content">
+            <span class="close" onclick="cancelForm(event)"
+              ><i class="ri-close-large-line"></i
+            ></span>
+            <div class="register-heading">
+              <h2>Asset Registeration</h2>
+            </div>
+            <form action="" class="form" id="asset-form">
+              <div class="form-grp">
+                <label for="asset-id">Asset ID</label><br />
+                <input
+                  type="number"
+                  name="asset-id"
+                  id="asset-id"
+                  placeholder="Enter Asset ID"
+                />
+              </div>
+
+              <div class="form-grp">
+                <label for="employee-id">Employee Id</label><br />
+                <input
+                  type="number"
+                  name="employee-id"
+                  id="employee-id"
+                  placeholder="Enter Employee-id"
+                />
+              </div>
+
+              <div class="form-grp">
+                <label for="serial-no">Serial No</label><br />
+                <input
+                  type="text"
+                  id="serial-no"
+                  name="serial-no"
+                  placeholder="Enter Serial No"
+                />
+              </div>
+
+             
+
+              <div class="form-grp">
+                <label for="category">Category</label><br />
+                <select name="category" id="category">
+                  <option value="select">Select</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="keyboard">Keyboard</option>
+                  <option value="mouse">Mouse</option>
+                  <option value="monitor">Monitor</option>
+                </select>
+              </div>
+              
+              <div class="form-grp">
+                <label for="brand">Brand</label><br />
+                <select name="brand" id="brand">
+                  <option value="select">Select</option>
+                  <optgroup label="Mobile">
+                    <option value="Samsung">Samsung</option>
+                    <option value="redme">Redme</option>
+                    <option value="realme">Realme</option>
+                  </optgroup>
+              
+                  <optgroup label="Laptop">
+                    <option value="dell">Dell</option>
+                    <option value="hp">HP</option>
+                    <option value="lenovo">Lenovo</option>
+                  </optgroup>
+              
+                  <optgroup label="Keyboard">
+                    <option value="logitech">Logitech</option>
+                    <option value="zebronics">Zebronics</option>
+                    <option value="razer">Razer</option>
+                  </optgroup>
+              
+                  <optgroup label="Mouse">
+                    <option value="logitech">Logitech</option>
+                    <option value="zebronics">Zebronics</option>
+                    <option value="razer">Razer</option>
+                  </optgroup>
+              
+                  <optgroup label="Monitor">
+                    <option value="dell">Dell</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="lg">LG</option>
+                    <option value="asus">ASUS</option>
+                  </optgroup>
+                </select>
+              </div>
+              
+              <div class="form-grp">
+                <label for="model">Model</label><br />
+                <select name="model" id="model">
+                  <option value="select">Select</option>
+              
+                  <optgroup label="Samsung (Mobile)">
+                    <option value="s23">Samsung S23</option>
+                    <option value="s24">Samsung S24</option>
+                    <option value="m31">Samsung M31 Galaxy</option>
+                  </optgroup>
+              
+                  <optgroup label="Redme">
+                    <option value="10pro">Redme Note 10 Pro</option>
+                    <option value="10promax">Redme Note 10 Pro Max</option>
+                    <option value="10">Redme Note 10</option>
+                  </optgroup>
+              
+                  <optgroup label="Realme">
+                    <option value="g2">Realme G2</option>
+                    <option value="9pro">Realme 9 Pro</option>
+                    <option value="8pro">Realme 8 Pro</option>
+                  </optgroup>
+              
+                  <optgroup label="Dell (Laptop)">
+                    <option value="xps">Dell XPS</option>
+                    <option value="11">Dell XPS 11</option>
+                    <option value="13">Dell XPS 13</option>
+                  </optgroup>
+              
+                  <optgroup label="HP">
+                    <option value="spectre">HP Spectre</option>
+                    <option value="15">HP 15</option>
+                    <option value="pavilion">HP Pavilion</option>
+                  </optgroup>
+              
+                  <optgroup label="Lenovo">
+                    <option value="ideapad">Lenovo IdeaPad</option>
+                    <option value="y50">Lenovo Y50</option>
+                    <option value="s50">Lenovo S50</option>
+                  </optgroup>
+              
+                  <optgroup label="Logitech (Keyboard)">
+                    <option value="g513">Logitech G513</option>
+                    <option value="k840">Logitech K840</option>
+                    <option value="g915">Logitech G915</option>
+                  </optgroup>
+
+                  <optgroup label="Zebronics(Keyboard)">
+                    <option value="zebronics_zeb_km500">Zebronics Zeb KM500</option>
+                    <option value="zebronics_zeb_km300">Zebronics Zeb KM300</option>
+                    <option value="zebronics_zeb_km600">Zebronics Zeb KM600</option>
+                    <option value="zebronics_zeb_km200">Zebronics Zeb KM200</option>
+                  </optgroup>
+
+                  <optgroup label="Razer(Keyboard)">
+                    <option value="razer_blackwidow_v3">Razer BlackWidow V3</option>
+                    <option value="razer_huntsman">Razer Huntsman</option>
+                    <option value="razer_orochi_v2">Razer Orochi V2</option>
+                    <option value="razer_blackwidow_v2">Razer BlackWidow V2</option>
+                    <option value="razer_cynosa_v2">Razer Cynosa V2</option>
+                    <option value="razer_huntsman_mini">Razer Huntsman Mini</option>
+                  </optgroup>
+                  
+                  
+
+                  <optgroup label="Logitech(Mouse)">
+                    <option value="mx_master_3">Logitech MX Master 3</option>
+                    <option value="g502_hero">Logitech G502 Hero</option>
+                    <option value="g_pro_wireless">Logitech G Pro Wireless</option>
+                    <option value="g703_lightspeed">Logitech G703 Lightspeed</option>
+                    
+                  </optgroup>
+                  
+              
+                  <optgroup label="Zebronics (Mouse)">
+                    <option value="zebronics_zeb_mouse">Zebronics Zeb Mouse</option>
+                    <option value="zebronics_zeb_zephyr">Zebronics Zeb Zephyr</option>
+                    <option value="zebronics_zeb_steel">Zebronics Zeb Steel</option>
+                  </optgroup>
+              
+                  <optgroup label="Razer (Mouse)">
+                    <option value="razer_deathadder">Razer DeathAdder</option>
+                    <option value="razer_mamba">Razer Mamba</option>
+                    <option value="razer_naga">Razer Naga</option>
+                    <option value="razer_viper">Razer Viper</option>
+                    <option value="razer_dahlia">Razer Dahlia</option>
+                  </optgroup>
+              
+                  <optgroup label="Dell (Monitor)">
+                    <option value="dell_u2720q">Dell U2720Q</option>
+                    <option value="dell_s2721dgf">Dell S2721DGF</option>
+                    <option value="dell_u3419w">Dell U3419W</option>
+                    <option value="dell_p2419h">Dell P2419H</option>
+                  </optgroup>
+              
+                  <optgroup label="Samsung (Monitor)">
+                    <option value="samsung_odyssey_g7">Samsung Odyssey G7</option>
+                    <option value="samsung_ue590">Samsung UE590</option>
+                    <option value="samsung_curved_lc24f390">Samsung Curved LC24F390</option>
+                    <option value="samsung_uhd_u28e590d">Samsung UHD U28E590D</option>
+                  </optgroup>
+              
+                  <optgroup label="LG">
+                    <option value="lg_ultragear_27gl850">LG UltraGear 27GL850</option>
+                    <option value="lg_27gn950b">LG 27GN950-B</option>
+                    <option value="lg_34wk650">LG 34WK650</option>
+                    <option value="lg_32gk850g">LG 32GK850G</option>
+                  </optgroup>
+                </select>
+              </div>
+              
+               
+              <div class="form-grp">
+                <label for="purchased-from">Purchased From</label><br />
+                <select name="purchased-from" id="purchased-from">
+                    <option value="select">Select</option>
+                    <option value="amazon">Amazon</option>
+                    <option value="flipkart">Flipkart</option>
+                    <option value="local Store">Local Store</option>
+               
+                </select>
+              </div>
+
+              <div class="form-grp">
+                <label for="purchase-date">Purchased Date</label><br />
+                <input type="date" name="purchase-date" id="purchase-date" />
+              </div>
+
+              <div class="form-grp">
+                <label for="warranty-start-date">Warranty Start Date</label
+                ><br />
+                <input
+                  type="date"
+                  name="warranty-start-date"
+                  id="warranty-start-date"
+                />
+              </div>
+
+              <div class="form-grp">
+                <label for="warranty-end-date">Warranty End Date</label><br />
+                <input
+                  type="date"
+                  name="warranty-end-date"
+                  id="warranty-end-date"
+                />
+              </div>
+
+              <div class="form-grp">
+                <label for="extendable">Warranty Extendable</label><br />
+                <select name="extendable" id="extendable">
+                    <option value="SELECT">Select</option>
+                    <option value="YES">Yes</option>
+                    <option value="NO">No</option>
+                </select>
+            </div>
+
+              <div class="form-grp">
+                <label for="price">Asset Price</label><br />
+                <input type="number"  id="price" name="price" placeholder="Enter AssetPrice">
+              </div>
+
+              
+              <div class="form-grp">
+                <label for="images">Asset Images</label><br />
+                <input type="file"  id="images" name="images" accept="image/*" multiple>
+                
+                 
+              </div>          
+
+              <div class="submit-cancel">
+                <button class="cancelbtn" onclick="cancelForm(event)">
+                  Cancel
+                </button>
+                <button id="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="imageViewerPopup" class="imageViewer-popup">
+          <div class="popup-content-image">
+              <span class="close" onclick="closeImageViewer()"><i class="ri-close-large-line"></i></span>
+             <div class="image-heading">
+              <h3>Uploaded Images</h3>
+             </div>
+              <div id="imageViewerContent">
+              </div>
+          </div>
+      </div>
+        <!-- End of Register Product -->
+
+        <!-- Inserting the datas into the table -->
+
+        <div class="table-wrapper">
+          <table border="1" id="table">
+            <thead>
+              <tr>
+                <th>Asset ID</th>
+                <th>Employee Id</th>
+                <th>Serial No</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Purchased From</th>
+                <th>Purchased Date</th>
+                <th>Warranty Start Date</th>
+                <th>Warranty End Date</th>
+                <th>Warranty Extendable</th>
+                <th>Asset Price</th>
+                <th>Asset Images</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- End of Assets -->
+
+      <!-- Extend Warranty Popup  -->
+
+      <div class="extendWarranty-popup" id="extendWarranty-popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="cancelExtendForm(event)">
+            <i class="ri-close-large-line"></i>
+            </span>
+            <div class="extendHeading">
+                <h2>Extend Warranty</h2>
+            </div>
+
+            <form action="">
+
+            <div class="form-grp">
+                <label for="asset-id">Asset ID</label><br />
+                <input type="number"  name="asset-id" id="asset-id" placeholder="Enter Asset ID"/>
+            </div>
+
+            <div class="form-grp">
+                <label for="serial-no">Serial Number</label><br />
+                <input type="text"  name="serial-no" id="serial-no" placeholder="Enter Serail Number"/>
+            </div>
+
+             <div class="form-grp">
+                <label for="purchase-date">Purchased Date</label><br />
+                <input type="date" name="purchase-date" id="purchase-date" />
+             </div>
+
+              <div class="form-grp">
+                <label for="warranty-start-date">Warranty Start Date</label><br />
+                <input type="date" name="warranty-start-date" id="warranty-start-date" />
+              </div>
+
+              <div class="form-grp">
+                <label for="warranty-end-date">Warranty End Date</label><br />
+                <input type="date" name="warranty-end-date" id="warranty-end-date" />
+               </div>
+
+               <div class="form-grp">
+                <label for="extendPrice">Warranty Extend Price</label><br />
+                <input type="number" name="extendPrice" id="extendPrice" />
+               </div>
+               
+               <div class="form-grp">
+                <label for="extendWarranty">Extend Warranty(in months)</label>
+                 <input type="number" name="extendWarranty" id="extendWarranty" />
+               </div>
+
+             <div class="submit-cancel">
+                <button class="cancelbtn" onclick="cancelExtendForm(event)">
+                  Cancel
+                </button>
+                <button id="submit">Submit</button>
+              </div>
+            </form>
+            
+        </div>
+      </div>
+
+      <!-- End of Extend Warranty Popup   -->
+
+      <div class="warranty-history-popup" id="warranty-history-popup" style="display: none;">
+        <div class="popup-content">
+          <span class="close" onclick="cancelHistoryForm(event)">
+            <i class="ri-close-large-line"></i>
+            </span>
+            <div class="history-heading">
+              <h3>Warranty History</h3>
+            </div>
+
+            <table id="history-table">
+              <thead>
+                <tr>
+                  <th>Asset ID</th>
+                  <th>Serial No</th>
+                  <th>Warranty Start Date</th>
+                  <th>Warranty End Date</th>
+                  <th>Warranty Extended until</th>
+                </tr>
+              </thead>
+            </table>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <script src="./js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  </body>
+</html>

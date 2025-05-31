@@ -1,0 +1,543 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: sans-serif; */
+    font-family: 'Roboto', 'Segoe UI', 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+/* Sidebar */
+.container{
+    display: flex;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.sidebar{
+    width: 300px;
+    min-height: 100vh;
+    /* background-color: black; */
+    background-color: #1E1E2F;
+    color: white;
+    flex-shrink: 0;
+    
+
+   
+}
+
+.heading{
+    font-size: 20px;
+    padding: 20px;
+}
+
+.list-grp li{
+    list-style: none;
+    padding: 10px;
+    margin: 20px;
+    font-size: 18px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.menu-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 0%;
+    height: 1px;
+    /* background-color: white; */
+    background-color: #00BCD4;
+    transition: width 0.3s ease-in-out;
+}
+
+.menu-item.active-menu::after {
+    width: 60%;
+}
+
+
+.logout{
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+}
+
+
+    
+
+/* Dashboard */
+
+
+.welcome{
+    padding: 25px;
+    
+}
+
+.dashboard-grp{
+  
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.dashboard-box{
+    height: 100px;
+    width: 300px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   
+}
+
+.count{
+    text-align: center;
+    padding: 15px;
+}
+
+
+/* Warranty Records */
+
+
+/* Filter  */
+
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around;
+    margin-top: 100px;
+    */
+}
+
+.filter-grp{
+    margin-top: 100px;
+    margin-right: 50px;
+    
+    
+}
+
+.filter-grp button{
+    
+    padding:10px;
+    /* background-color: black; */
+    background-color: #00BCD4;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    font-size: 16px;
+    /* margin-left: 100px; */
+    width: 6vw;
+   
+}
+
+.filter-grp button:hover{
+    background-color: #0097A7;
+}
+
+ .filter-grp select{
+    outline: none;
+    font-size: 16px;
+    color: #333333;
+    /* background-color: #039BE5; */
+    border:#D1D9E6;
+    background-color: #F0F4F8;
+    border-radius: 3px;
+     padding: 10px;
+ }
+
+
+
+ /* Add Asset Button  */
+
+ .add-asset button{
+    margin-top: 50px;
+    padding:10px;
+    /* background-color: black; */
+    background-color: #4CAF50;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    font-size: 16px;
+   
+ }
+
+ .add-asset button:hover{
+    background-color: #388E3C;
+ }
+
+/* popup form  */
+
+.reg-popup{
+  display: none;
+  position: fixed;
+  z-index:1;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+.popup-content {
+    
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+    max-height: 100vh;  
+    overflow-y: auto;  
+    
+    margin: 0 auto;
+   
+  }
+
+  .close{
+    float:right;
+    cursor: pointer;
+    color: red;
+  }
+
+.add-product button{
+    padding:10px;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    font-size: 16px;
+   
+}
+
+.add-product button:hover{
+    background: rgb(51, 50, 50);
+}
+
+.form .form-grp{
+  
+    margin-left:30px;
+    padding: 10px;
+}
+
+.form{
+    font-size: 18px;
+}
+
+.register-heading h2{
+   text-align: center;
+   padding-top: 25px;
+   color: white;
+   font-size: 30px;
+   text-shadow: 2px 2px 2px rgb(220, 138, 31);
+}
+
+.form-grp input{
+    outline: none;
+    padding: 5px;
+    font-size:15px ;
+    margin-top: 8px;
+    width: 80%;
+}
+
+.form-grp select{
+    outline: none;
+    padding: 5px;
+    font-size:15px ;
+    margin-top: 8px;
+    width: 80%;
+}
+
+
+
+.cancelbtn{
+    background-color: red;
+    color: black;
+}
+
+
+
+
+
+.submit-cancel{
+    display: flex;
+}
+
+.submit-cancel button:nth-child(1){
+    text-align: center;
+    /* padding: 10px; */
+    width: 40%;
+    height: 5vh;
+    margin-left: 50px;
+    background: rgb(245, 55, 55);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.submit-cancel button:nth-child(1):hover{
+    background: rgb(233, 120, 120);
+}
+
+.submit-cancel button:nth-child(2){
+    text-align: center;
+    /* padding: 10px; */
+    width: 40%;
+    height: 5vh;
+    margin-left: 50px;
+    background: rgb(7, 132, 7);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+.submit-cancel button:nth-child(2):hover{
+    background: rgb(62, 135, 62);
+}
+
+/* table data */
+
+
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin: 20px 0;
+    padding-bottom: 15px; 
+    
+}
+
+
+#table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap; 
+    min-width: 1500px; 
+}
+
+#table th, #table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#table thead tr th {
+    /* background-color: rgb(60, 141, 60); */
+    background-color:#4CAF50;
+    color: white;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+
+#assests {
+    width: 100%;
+    overflow: hidden; 
+    padding: 0 20px;
+}
+    
+
+.dataTables_filter{
+    margin-bottom: 20px;
+   
+}
+
+
+.dataTables_filter input{
+   padding: 20px;
+   font-size: 16px;
+   border: none;
+   outline: none;
+   
+}
+
+.edit-row{
+  
+    color: white;
+    background-color: #007bff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.edit-row:hover{
+    background-color:#0097A7;
+}
+
+.delete-row{
+    color: white;
+    background-color: red;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.delete-row:hover{
+    background-color:rgb(233, 120, 120);
+}
+
+.extend-warranty,.warranty-history{
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.extend-warranty:hover,.warranty-history:hover
+{
+    background-color: #388E3C;
+} 
+
+
+
+/* Extend Warranty Popup  */
+
+.extendWarranty-popup{
+    display: none;
+    position: fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.extendWarranty-popup .popup-content  .form-grp{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.extendHeading h2{
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 2px rgb(220, 138, 31);
+}
+
+
+.warranty-history-popup{
+    display: none;
+    position: fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.history-heading h3{
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 2px rgb(220, 138, 31);
+
+}
+
+
+.warranty-history-popup table{
+    margin-top: 50px;
+}
+
+.warranty-history-popup table thead tr th{
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Image popup  */
+
+
+.view-images-btn{
+    color: white;
+    background-color: grey;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.view-images-btn:hover{
+    background-color: rgb(184, 177, 177);
+}
+
+.popup-content-image{
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+    max-height: 100vh;  
+    overflow-y: auto;  
+    
+    margin: 0 auto;
+}
+
+.imageViewer-popup{
+    display: none;
+    position: fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.image-heading h3{
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 2px rgb(220, 138, 31);
+}
