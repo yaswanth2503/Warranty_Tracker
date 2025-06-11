@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif;
+  
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border:1px solid rgb(252, 20, 20);
+  
+}
+
+.btn{
+    background: linear-gradient(-90deg, #22bfb2, #37cab5, #47d3b7, #4dd6b8);
+    color: white;
+    width: 100%;
+   
+}
+
+.btn:hover{
+    color: white;
+}
+
+.btn:active,.btn:focus{
+    box-shadow: none;
+}
+
+.form-grp{
+    position: relative;
+    margin: 20px;
+}
+
+.ic{
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-size: 20px;
+    color: linear-gradient(-90deg, #22bfb2, #37cab5, #47d3b7, #4dd6b8);
+}
+
+.form-control{
+    padding-left: 60px;
+}
+
+.col-auto{
+    padding: 20px;
+}
+
+.container-fluid{
+    position: absolute;
+    top: 30%;
+    left: 39%;
+    width: fit-content;
+}
